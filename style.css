@@ -1,0 +1,2422 @@
+
+/* =====================
+   GLOBAL RESET & BODY
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #1abc9c;
+}
+
+/* =====================
+   HEADER
+===================== */
+header {
+    width: 100%;
+    padding: 15px 25px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* keeps layout clean */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo-bold {
+    font-weight: 700;
+    color: #111;
+}
+
+.logo-light {
+    font-weight: 400;
+    color: #777;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    font-weight: 500;
+}
+
+/* =====================
+   HERO (WITH IMAGE)
+===================== */
+.hero {
+    height: 100vh;
+    padding: 50px 20px 20px; /* FIXED: combines top + side padding */
+
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("images/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: #fff;
+}
+
+
+
+/* CLEAN HERO TITLE (FIXED DUPLICATES) */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    margin-bottom: 15px;
+}
+
+.hero-subtext {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+
+    .hero-title {
+        font-size: 2.3rem;
+        line-height: 1.2;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .hero-subtext {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    .hero {
+    padding-top: 140px; /* adjusts for header */
+    height: auto;
+}
+}
+
+/* HERO BUTTON */
+.cta-btn {
+    padding: 15px 35px;
+    background: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #16a085;
+    transform: scale(1.05);
+}
+
+/* =====================
+   SEARCH SECTION (PREMIUM FLOAT)
+===================== */
+.search-section {
+    text-align: center;
+    padding: 60px 20px 20px;
+    background: transparent;
+    margin-top: -120px; /* pulls into hero */
+    position: relative;
+    z-index: 10;
+}
+
+.search-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.search-section p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* FLOATING GLASS SEARCH BOX */
+.search-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+
+    padding: 25px;
+    border-radius: 15px;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    max-width: 950px;
+    margin: auto;
+    width: 100%;
+}
+
+
+/* Inputs */
+.search-box input,
+.search-box select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-width: 160px;
+}
+
+/* Button */
+.search-box button {
+    padding: 12px 25px;
+    background: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.search-box button:hover {
+    background: #16a085;
+}
+@media (max-width: 768px) {
+
+    .search-box {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .search-box input,
+    .search-box select,
+    .search-box button {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+
+    .search-section {
+        margin-top: -80px;
+        padding: 40px 15px 10px;
+    }
+}
+
+/* =====================
+   PROPERTY GRID
+===================== */
+/* 1. THE GRID - Base style (Small Phones) */
+.properties {
+    display: grid;
+    grid-template-columns: 1fr; /* Default: 1 column for small phones */
+    gap: 20px;
+    padding: 20px 15px;
+    background-color: #f4f7f6;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 2. MEDIUM SCREENS (Large Phones & Tablets) 
+   When screen is wider than 600px, switch to 2 columns */
+@media (min-width: 600px) {
+    .properties {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 25px;
+        padding: 30px 5%;
+    }
+}
+
+/* 3. DESKTOP SCREENS 
+   When screen is wider than 1024px, switch to 3 columns */
+@media (min-width: 1024px) {
+    .properties {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px;
+        padding: 40px 5%;
+    }
+}
+
+/* --- THE REST OF YOUR CARD CSS REMAINS THE SAME --- */
+
+.property-card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #eaeaea;
+}
+
+/* Ensure the image height is consistent */
+.card-image-container {
+    position: relative;
+    width: 100%;
+    height: 280px; 
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay Icons (No glass background) */
+.card-overlays {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 12px;
+}
+
+.overlay-icon {
+    background: none; 
+    backdrop-filter: none;
+    color: rgba(255, 255, 255, 0.9); 
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Text and Features... */
+.card-text-container { padding: 25px 15px; text-align: center; }
+.property-price { color: #00bf73; font-weight: 800; font-size: 1.3rem; }
+.card-features-container { display: flex; justify-content: center; gap: 20px; padding: 15px; border-top: 1px solid #f0f0f0; }
+
+/* 3. THE CARD */
+.property-card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #eaeaea;
+}
+
+/* 4. THE IMAGE */
+.card-image-container {
+    position: relative;
+    width: 100%;
+    height: 280px; 
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 5. OVERLAYS - Glass effect removed */
+.badge {
+    position: absolute;
+    top: 15px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-left-green {
+    left: 15px;
+    background: #00bf73;
+    color: white;
+}
+
+.badge-right-black {
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.card-overlays {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 12px; /* Slight gap between icons */
+}
+
+.overlay-icon {
+    /* REMOVED: background and backdrop-filter */
+    background: none; 
+    backdrop-filter: none;
+    
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Set icon color to white with slight transparency to match reference */
+    color: rgba(255, 255, 255, 0.9); 
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Optional: helps icons pop against light images */
+}
+
+/* 6. TEXT CONTENT */
+.card-text-container {
+    padding: 25px 15px;
+    text-align: center;
+}
+
+.property-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.property-price {
+    font-size: 1.3rem;
+    color: #00bf73;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.property-type {
+    font-size: 0.8rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 7. FEATURES Row */
+.card-features-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: #444;
+}/* =====================
+   FOOTER
+===================== */
+footer {
+    background: #ffffff;
+    color: #060000;
+    text-align: center;
+    padding: 30px;
+}
+
+footer a {
+    color: #000806;
+}
+
+/* =====================
+   ABOUT & CONTACT
+===================== */
+.about-section,
+.contact-section {
+    max-width: 1000px;
+    margin: 150px auto 50px auto;
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.contact-info {
+    margin-top: 30px;
+    color: #068168;
+}
+
+/* HERO SEARCH TEXT */
+.hero-search-text {
+    margin-top: 40px;
+}
+
+.hero-search-text h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero-search-text p {
+    opacity: 0.9;
+}
+.contact-hero {
+    height: 60vh;
+    background: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("images/contact-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+    text-align: center;
+}
+/* SEARCH BOX */
+.search-box {
+    margin-top: 20px;
+
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+
+    padding: 20px;
+    border-radius: 12px;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.search-box input,
+.search-box select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.search-box button {
+    padding: 12px 25px;
+    background: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+/* =====================
+   MOBILE FIXES ONLY
+===================== */
+@media (max-width: 768px) {
+
+    /* FIX HERO TEXT OVERLAP */
+    .hero {
+        padding-top: 50px; /* more space for fixed header on mobile */
+        height: auto; /* allow content expand properly */
+        padding-bottom: 60px;
+    }
+
+    /* FIX SEARCH BOX OVERLAPPING LISTINGS */
+    .search-box {
+        margin-bottom: 40px; /* creates space before listings */
+    }
+
+    /* KEEP SEARCH ELEMENTS CLEAN */
+    .search-box input,
+    .search-box select,
+    .search-box button {
+        max-width: 100%; /* full width on mobile */
+    }
+}
+/* =====================
+   NO RESULTS CARD
+===================== */
+.no-results {
+    display: none; /* initially hidden */
+    text-align: center;
+    margin: 50px auto;
+}
+
+.no-results-card {
+    display: inline-block;
+    padding: 30px 40px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.no-results-card p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.no-results-card span {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.no-results-card button {
+    padding: 10px 25px;
+    background: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.no-results-card button:hover {
+    background: #16a085;
+    transform: scale(1.05);
+}
+/* =====================
+   PRE FOOTER SECTION
+===================== */
+.pre-footer {
+    background: #f5f5f5;
+    padding: 60px 50px 30px;
+}
+
+/* DESKTOP LAYOUT */
+.pre-footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1200px;
+    margin: auto;
+    align-items: start;
+}
+
+/* LOGO */
+.pre-footer-logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; /* bigger */
+    font-weight: 700;
+    color: #000a08;
+    letter-spacing: 1px;
+}
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 2.2rem;
+    }
+}
+/* DESKTOP HEADERS */
+.accordion-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    cursor: default;
+}
+
+.accordion-header span {
+    display: none; /* hide arrow on desktop */
+}
+
+/* DESKTOP LIST */
+.accordion-content {
+    display: block;
+}
+
+.pre-footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pre-footer-col ul li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Stay Connected */
+.stay-connected {
+    margin-top: 25px;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0.7;
+}
+
+/* FOOTER LINKS */
+.footer-links {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: #555;
+}
+
+.footer-links a:hover {
+    color: #1abc9c;
+}
+
+/* =====================
+   MOBILE VERSION (ACCORDION)
+===================== */
+@media (max-width: 768px) {
+
+    .pre-footer {
+        padding: 40px 20px;
+    }
+
+    .pre-footer-container {
+        display: block;
+        text-align: left;
+    }
+
+    /* ACCORDION STYLE */
+    .accordion-header {
+        width: 100%;
+        padding: 18px 0;
+        border-bottom: 1px solid #0c0000;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .accordion-header span {
+        display: block;
+    }
+
+    /* HIDE CONTENT */
+    .accordion-content {
+        display: none;
+        padding: 10px 0 15px;
+    }
+
+    /* SHOW WHEN ACTIVE */
+    .accordion-content.active {
+        display: block;
+    }
+
+    /* LIST FIX */
+    .pre-footer-col ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .pre-footer-col ul li {
+        padding: 8px 0;
+    }
+
+    /* SOCIAL */
+    .social-icons {
+        font-size: 1.5rem;
+    }
+
+    /* LINKS STACK */
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* =====================
+   FORCE DESKTOP LAYOUT (FINAL FIX)
+===================== */
+@media (min-width: 769px) {
+
+    .pre-footer-container {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 60px !important;
+        align-items: start !important;
+    }
+
+    .accordion-content {
+        display: block !important;
+    }
+
+    .accordion-header {
+        border: none !important;
+        cursor: default !important;
+        margin-bottom: 15px;
+    }
+
+    .accordion-header span {
+        display: none !important;
+    }
+
+    .pre-footer-col {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px; /* smaller */
+    }
+
+    .logo {
+        font-size: 1.3rem; /* reduce logo size */
+    }
+}
+/* =====================
+   MOBILE NAV FINAL FIX
+===================== */
+
+/* HAMBURGER ICON */
+.menu-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: none; /* hidden on desktop */
+    z-index: 3000;
+}
+
+/* MOBILE MENU PANEL */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: #fff;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: 0.4s ease;
+    z-index: 2000;
+
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+}
+
+/* ACTIVE MENU */
+.mobile-menu.active {
+    left: 0;
+}
+
+/* LINKS */
+.mobile-menu a {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    
+    align-self: flex-end; 
+}
+
+/* 1. THE MOVEMENT - Keep this exactly as is */
+#page-content {
+    transition: transform 0.4s ease;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+}
+
+#page-content.shift {
+    transform: translateX(70%);
+}
+
+/* 2. THE HEADER FADE - No more "all" transition here */
+#page-content.shift header {
+    background-color: transparent !important;
+    opacity: 0; 
+    pointer-events: none; /* Stops you from clicking invisible buttons */
+}
+
+/* =====================
+    MOBILE ONLY
+===================== */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    header {
+        padding: 0px 15px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        background-color: #fff;
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+
+        /* FIX: Only animate the fade, NOT the layout/size */
+        transition: opacity 0.4s ease, background-color 0.4s ease;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        /* Keep this: prevents the logo from sliding around */
+        transition: none !important; 
+    }
+}
+/* =====================
+   AGENTS SECTION
+===================== */
+.agents-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+.agents-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+/* CONTAINER */
+.agents-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.agent-card {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 15px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.agent-card:hover {
+    transform: translateY(-8px);
+}
+
+/* IMAGE (CIRCLE) */
+.agent-card img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* NAME */
+.agent-card h3 {
+    margin-bottom: 5px;
+}
+
+/* ROLE */
+.agent-card p {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* ACTION ICONS */
+.agent-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.agent-actions a {
+    width: 40px;
+    height: 40px;
+    background: #1abc9c;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.agent-actions a:hover {
+    background: #16a085;
+    transform: scale(1.1);
+}
+
+/* =====================
+   MOBILE OPTIMIZATION
+===================== */
+@media (max-width: 768px) {
+
+    .agents-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .agent-card {
+        width: 90%;
+    }
+
+    .agents-section h2 {
+        font-size: 1.6rem;
+    }
+}
+.agent-actions a i {
+    line-height: 1;
+}
+/* =====================
+   AGENT ICON PREMIUM EFFECT
+===================== */
+
+.agent-actions a {
+    width: 55px;
+    height: 55px;
+    background: #1abc9c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: #fff;
+    font-size: 1.2rem;
+
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ICON HOVER EFFECT */
+.agent-actions a:hover {
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(26, 188, 156, 0.5);
+}
+
+/* ICON INSIDE ANIMATION */
+.agent-actions a i {
+    transition: transform 0.4s ease;
+}
+
+.agent-actions a:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* GLOW RING EFFECT */
+.agent-actions a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(26, 188, 156, 0.4);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.agent-actions a:hover::before {
+    transform: scale(1.6);
+    opacity: 1;
+}
+
+/* INDIVIDUAL BRAND COLORS (PREMIUM TOUCH) */
+.agent-actions a:nth-child(1):hover {
+    background: #27ae60; /* phone */
+}
+
+.agent-actions a:nth-child(2):hover {
+    background: #2c3e50; /* email */
+}
+
+.agent-actions a:nth-child(3):hover {
+    background: #25D366; /* WhatsApp */
+}
+.agent-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+/* =====================
+   DESKTOP & TABLET FIX
+===================== */
+@media (min-width: 769px) {
+
+    /* Make the container allow space for cards to be side-by-side */
+    .agents-container {
+        flex-wrap: nowrap; /* Forces them to stay in one row on desktop */
+        gap: 30px;
+    }
+
+    /* Increase the card width slightly to fit the 55px icons */
+    .agent-card {
+        width: 320px; 
+        min-height: 400px; /* Keeps all cards the same height */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Pushes icons to the bottom evenly */
+    }
+
+    /* Ensure the icon row doesn't wrap or overlap */
+    .agent-actions {
+        flex-wrap: nowrap;
+        width: 100%;
+        padding-top: 10px;
+    }
+}
+/* =====================
+   TABLET FIX (481px to 768px)
+===================== */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    
+    .agent-card {
+        width: 80% !important; /* Narrow the card slightly so it doesn't stretch too far */
+        max-width: 400px;
+        margin: 20px auto;
+        
+        /* Force the content to stay stacked vertically */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 30px 20px !important;
+    }
+
+    .agent-actions {
+        /* Ensure the icons stay in a neat row at the bottom */
+        display: flex !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        margin-top: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Prevent the image from floating to the left */
+    .agent-card img {
+        margin: 0 auto 15px auto !important;
+    }
+}
+/* =====================
+   CONTACT HERO UPGRADE
+===================== */
+
+.contact-hero {
+    height: 65vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("images/contact-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GLASS BOX */
+.hero-overlay {
+    background: rgba(255,255,255,0.08); /* 🔥 transparent */
+    backdrop-filter: blur(12px);
+
+    padding: 50px 70px;
+    border-radius: 15px;
+
+    text-align: center;
+    color: #fff;
+
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+/* TEXT */
+.hero-overlay h1 {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ANIMATION */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards;
+}
+
+.fade-in.delay {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 768px) {
+    .contact-hero {
+        background-attachment: scroll; /* prevents mobile bug */
+        height: 55vh;
+    }
+
+    .hero-overlay {
+        padding: 25px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1rem;
+    }
+}
+/* =====================
+   PREMIUM CONTACT CARD
+===================== */
+
+.contact-premium {
+    margin-top: -80px; /* 🔥 pulls card into hero */
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.contact-card {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+
+    padding: 40px;
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+
+    max-width: 600px;
+    width: 100%;
+}
+
+/* TEXT */
+.contact-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* OPTIONS */
+.contact-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    padding: 15px 20px;
+    border-radius: 10px;
+
+    background: #f9f9f9;
+
+    transition: 0.3s ease;
+}
+
+/* ICONS */
+.contact-box i {
+    font-size: 1.5rem;
+    color: #1abc9c;
+}
+
+/* HOVER EFFECT */
+.contact-box:hover {
+    background: #047b63;
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+.contact-box:hover i {
+    color: #fff;
+}
+@media (max-width: 768px) {
+
+    .contact-premium {
+        margin-top: -50px;
+    }
+
+    .contact-card {
+        padding: 25px;
+    }
+
+    .contact-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+/* =====================
+   ABOUT HERO
+===================== */
+.about-hero {
+    height: 100vh; /* 🔥 full screen (fixes rectangular issue) */
+
+    background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("images/about-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =====================
+   STORY
+===================== */
+.about-story {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.about-container h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.about-container p {
+    color: #666;
+    line-height: 1.8;
+}
+
+/* =====================
+   STATS
+===================== */
+.about-stats {
+    background: #f9f9f9;
+    padding: 60px 20px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 2rem;
+    color: #047b63;
+    min-width: 120px;
+}
+
+.stat-box p {
+    color: #555;
+}
+
+/* =====================
+   CTA
+===================== */
+.about-cta {
+    height: 60vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("images/about-bg.jpg"); /* 🔥 same image */
+
+    background-size: cover;
+    background-position: bottom; /* 🔥 shows lower part */
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: #fff;
+}
+
+.about-cta h2 {
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+
+    .about-hero,
+    .about-cta {
+        background-attachment: scroll; /* fixes mobile */
+        height: 70vh;
+    }
+
+    .hero-overlay {
+        padding: 25px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================
+   HERO TEXT ANIMATION
+===================== */
+.hero-overlay h1,
+.hero-overlay p {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 3s ease forwards;
+}
+
+.hero-overlay p {
+    animation-delay: 0.4s;
+}
+
+/* =====================
+   STATS ANIMATION (FADE IN)
+===================== */
+.stat-box {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+}
+
+.stat-box:nth-child(1) { animation-delay: 0.2s; }
+.stat-box:nth-child(2) { animation-delay: 0.4s; }
+.stat-box:nth-child(3) { animation-delay: 0.6s; }
+
+/* =====================
+   CTA RECTANGLE + ANIMATION
+===================== */
+.about-cta {
+    height: 50vh; /* rectangular */
+}
+
+.about-cta h2,
+.about-cta .cta-btn {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+}
+
+.about-cta .cta-btn {
+    animation-delay: 0.4s;
+}
+
+/* =====================
+   KEYFRAME
+===================== */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =====================
+   SCROLL REVEAL (JS-TRIGGERED)
+===================== */
+
+/* 1. Initial Hidden State */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px); /* Starts 50px lower */
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition */
+    visibility: hidden; /* Prevents interaction before reveal */
+}
+
+/* 2. Active Revealed State */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Moves to original position */
+    visibility: visible;
+}
+/* =====================
+   MAP IN GRID FIX
+===================== */
+.map-card {
+    grid-column: span 1; /* Occupies one slot beside the cards */
+    display: flex;
+    height: 100%;
+}
+
+.map-card iframe {
+    flex-grow: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.property-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-10px); /* Lifts the card up slightly */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* Deepens the shadow */
+}
+/* Container styling to match your input boxes */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-trigger {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* THE DARK MENU - This matches your Location dropdown image */
+.dropdown-menu {
+    display: none; /* Hidden until clicked */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a; /* Dark background */
+    z-index: 1000;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Individual Items */
+.dropdown-item {
+    padding: 10px 15px;
+    color: white; /* White text */
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: #333; /* Slightly lighter on hover */
+}
+
+/* Show menu when active */
+.custom-dropdown.active .dropdown-menu {
+    display: block;
+}
+/* --- Master Layout for Desktop --- */
+.property-container { padding: 40px 8%; max-width: 1300px; margin: 0 auto; }
+/* Pushes the content down so it isn't hidden under the fixed top navigation */
+body {
+    padding-top: 60px; /* Adjust this number (e.g., 90px or 100px) until the title is fully visible */
+}
+
+/* Ensure the property container has a consistent starting point */
+.property-container {
+    margin-top: 20px;
+}
+/* Combined & Corrected Header Fix */
+.desktop-header-block {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    gap: 40px; 
+    width: 100%;
+}
+
+.header-left {
+    flex: 1; 
+    min-width: 0; 
+}
+
+.price-main {
+    /* Functional Fixes */
+    white-space: nowrap; /* Prevents text from cutting off or wrapping */
+    flex-shrink: 0;      /* Prevents the title from pushing the price */
+    
+    /* Your Style Preferences */
+    font-size: 2.4rem; 
+    font-weight: 800; 
+    color: #111; 
+    text-align: right;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.desktop-actions { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 10px; 
+    justify-content: flex-end; 
+}
+
+.action-btn { 
+    border: 1px solid #ddd; 
+    background: #fff; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+/* Desktop Gallery Grid */
+.gallery-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; height: 550px; }
+.side-photos-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.main-photo-box img, .side-photos-grid img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+
+/* Desktop Stats Bar (Hidden on Mobile) */
+.desktop-details-bar {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    margin-top: 30px;
+}
+.detail-item { display: flex; flex-direction: column; gap: 5px; }
+.detail-value { font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.detail-sub { font-size: 0.85rem; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Visibility Toggles */
+.mobile-header-block, .mobile-floating-agent, .mobile-gallery-overlay { display: none; }
+
+/* --- Mobile View Adjustments --- */
+@media (max-width: 768px) {
+    .desktop-header-block, .side-photos-grid, .desktop-details-bar { display: none !important; }
+    
+    .property-container { padding: 0; }
+    .gallery-wrapper { grid-template-columns: 1fr; height: 320px; }
+    .main-photo-box { position: relative; }
+    .main-photo-box img { border-radius: 0; }
+
+    .mobile-gallery-overlay {
+        display: flex; position: absolute; top: 15px; right: 15px;
+        background: rgba(0,0,0,0.6); color: #fff; padding: 5px 12px; border-radius: 4px;
+    }
+
+    .mobile-header-block { display: block; padding: 20px; }
+    .mobile-title-row { display: flex; justify-content: space-between; }
+    .mobile-price-tag { font-size: 1.8rem; font-weight: 800; color: #00bf73; margin-top: 15px; }
+    
+    .mobile-info-right { display: flex; gap: 10px; }
+    .mobile-icon-btn { border: 1px solid #eee; background: #fff; padding: 10px; border-radius: 6px; }
+
+    /* Agent Bar Styling */
+    .mobile-floating-agent {
+        display: flex; position: fixed; bottom: 0; left: 0; width: 100%;
+        background: #fff; padding: 12px 20px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+        justify-content: space-between; align-items: center; z-index: 9999;
+    }
+    .agent-profile img { width: 45px; height: 45px; border-radius: 50%; }
+    .action-green { width: 44px; height: 44px; background: #00bf73; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+}
+
+
+/* Fix for the Mobile View (Screenshot 163853) */
+@media (max-width: 768px) {
+    .desktop-header-block, .side-photos-grid, .desktop-details-bar {
+        display: none !important; /* Hide desktop parts */
+    }
+    
+    .mobile-header-block {
+        display: block;
+        padding: 15px;
+    }
+
+    #property-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .mobile-price-tag {
+        color: #00bf73; /* Green price from your reference */
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+
+/* Ensure images actually show up */
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+/* --- Fix 1: Desktop Price Cut-off (Screenshot 11) --- */
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0; /* Prevents the price from being squished */
+    min-width: 300px; /* Ensures space for the ₦ sign and zeros */
+}
+
+
+/* --- Fix 2: Responsive Fixes for Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+    
+    /* A. Fix the too-small image (Screenshot 12) */
+    .gallery-wrapper {
+        display: block !important; /* Forces simple vertical flow */
+        height: auto !important; /* Removes the fixed desktop grid height */
+    }
+
+    .main-photo-box {
+        width: 100vw; /* Fills full screen width */
+        height: 350px; /* Set a substantial mobile height */
+        margin-left: -20px; /* Counteracts parent padding to go full-bleed */
+        margin-right: -20px;
+    }
+
+    #property-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crops image to fill without stretching */
+        border-radius: 0; /* Full bleed look */
+    }
+
+    /* B. Make Like/Share Icons Square (Screenshot 12) */
+    .mobile-info-right {
+        display: flex;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .mobile-icon-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;  /* Equal width and height for square */
+        height: 44px;
+        padding: 0;
+        border: 1px solid #eee;
+        border-radius: 8px; /* Slightly rounded squares */
+        font-size: 1.2rem;
+    }
+
+    /* C. Fix Agent Bar Icons: Side-by-Side and Sizing (Screenshot 12) */
+    .mobile-floating-agent {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 12px 15px;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+        justify-content: space-between; /* Space profile from buttons */
+        align-items: center;
+        z-index: 10000; /* Ensure it floats above everything */
+    }
+
+    .agent-quick-actions {
+        display: flex;
+        gap: 8px; /* Small space between square buttons */
+        justify-content: flex-end; /* Buttons sit together on the right */
+        flex-shrink: 0;
+    }
+
+    /* D. Square, Colorized Mobile Buttons */
+    .action-btn-sq {
+        width: 42px;  /* Slightly smaller for the bar */
+        height: 42px; /* Perfect square */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        text-decoration: none; /* Removes link underline */
+    }
+
+    /* Green colors matching the reference standard */
+    .whatsapp { background-color: #00bf73; color: white; }
+    .phone { background-color: #00bf73; color: white; }
+    
+    /* Unique color for the new Email icon */
+    .email { background-color: #fff; border: 1px solid #00bf73; color: #00bf73; }
+}
+/* Note the commas after each line—these are essential! */
+.search-bar, 
+.filter-container, 
+#search-bar { 
+    display: none !important; 
+}
+/* --- Property Description Section --- */
+.property-description {
+    padding: 30px 20px;
+    background-color: #fff;
+    line-height: 1.8; /* Better readability */
+    color: #444;
+}
+
+.property-description h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 15px;
+    border-left: 5px solid #28a745; /* Green accent bar */
+    padding-left: 15px;
+}
+
+.property-description h3 {
+    font-size: 20px;
+    color: #222;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.property-description p {
+    margin-bottom: 20px;
+}
+
+/* --- Styling the Lists --- */
+.property-description ul {
+    list-style: none; /* Remove default dots */
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.property-description ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Adding a custom checkmark or bullet */
+.property-description ul li::before {
+    content: "✔";
+    color: #28a745;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* --- The CTA Box (Viewing Button) --- */
+.cta-box {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.cta-box h4 {
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.viewing-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.viewing-btn:hover {
+    background-color: #28a745; /* Turns green when hovered */
+}
+.status-badges {
+    display: flex; /* Keeps badges in a row */
+    gap: 10px;    /* Space between the two badges */
+    margin-bottom: 15px;
+}
+
+.badge {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.badge.featured {
+    background-color: #79c321; /* The Ikate Green */
+}
+
+.badge.for-sale {
+    background-color: #4a4a4a; /* The Dark Grey */
+}
+.status-badges {
+    display: flex !important;
+    position: relative;
+    z-index: 999; /* This pushes them to the very front layer */
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+/* --- FIX 1: GLOBAL BADGE RULES (Applies everywhere) --- */
+.badge {
+    display: inline-block !important;
+    width: auto !important;         /* Prevents the "oversized" look */
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;            /* Keeps text on one line */
+}
+
+/* --- FIX 2: PROPERTY CARDS (Listing Pages) --- */
+/* This targets badges ONLY when they are inside a card */
+.property-card .status-badges {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 5px;
+    position: absolute;             /* Floats them on the image */
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    width: auto !important;         /* Stops the giant bars */
+}
+
+/* --- FIX 3: INDIVIDUAL PROPERTY PAGE (Details Page) --- */
+/* This targets badges ONLY on the specific property view */
+.property-container .status-badges, 
+.mobile-header-block .status-badges {
+    display: flex !important;
+    position: relative !important;  /* Stops them from floating over text */
+    margin-bottom: 10px;            /* Pushes the title down slightly */
+    top: 0 !important;
+    left: 0 !important;
+    width: auto !important;
+    gap: 8px;
+}
+/* This targets the badges ONLY on the property details page */
+.property-container .status-badges, 
+.mobile-header-block .status-badges {
+    position: relative !important; /* Forces badges to take up actual space */
+    display: flex !important;      /* Sits them side-by-side */
+    flex-direction: row !important;
+    gap: 8px;
+    margin-bottom: 15px;           /* Pushes the "Luxury Apartment" title down */
+    top: 0 !important;             /* Resets the floating position */
+    left: 0 !important;            /* Resets the floating position */
+    width: auto !important;
+}
+
+/* Ensures the badges themselves stop floating */
+.property-container .badge,
+.mobile-header-block .badge {
+    position: static !important;   /* Completely removes absolute behavior */
+}
+.details-section {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.details-main-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.updated-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.details-box {
+    background-color: #f0f9ff; /* Light Sky Blue */
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 600px; /* Limits width like your screenshot */
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0f2fe;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.detail-value {
+    color: #475569;
+}
+.additional-details-section {
+    padding: 20px 0 40px;
+    background-color: #fff;
+}
+
+.additional-details-list {
+    max-width: 800px; /* Adjust based on your layout */
+}
+
+.additional-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee; /* Creates the light gray line */
+}
+
+.additional-label {
+    font-weight: 600;
+    color: #000;
+    font-size: 18px;
+}
+
+.additional-value {
+    color: #333;
+    font-size: 18px;
+}
+/* --- CONTACT AGENT SECTION --- */
+.agent-contact-section {
+    padding: 60px 0;
+    background-color: #fff;
+    border-top: 1px solid #eee; /* Optional separator */
+}
+
+.agent-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 700px;
+    margin: 40px auto 0; /* Centers the whole card on page */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Agent Photo Centering Logic */
+.agent-photo-box {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Optional circle photo */
+    overflow: hidden; /* Crops any image to the box size */
+    flex-shrink: 0;   /* Prevents photo from squishing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+}
+
+#agent-photo {
+    width: 100%;       /* Fills the box width */
+    height: 100%;      /* Fills the box height */
+    object-fit: cover; /* Centers the image content inside the box */
+    display: block;
+}
+
+/* Agent Info Styling */
+.agent-info-box {
+    flex-grow: 1;
+}
+
+.agent-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.agent-name i {
+    color: #888;
+    font-size: 18px;
+}
+
+/* Contact Buttons Logic */
+.contact-links {
+    display: flex;
+    flex-wrap: wrap; /* Wraps on mobile */
+    gap: 15px;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.phone-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.phone-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.whatsapp-btn {
+    background-color: #07961d;
+    color: #f4f5f4; /* WhatsApp Green */
+    border: 2px solid #25D366;
+}
+
+.whatsapp-btn:hover {
+    background-color: #25D366;
+    color: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .agent-card {
+        flex-direction: column; /* Stacks image on top */
+        text-align: center;
+    }
+    
+    .agent-name {
+        justify-content: center;
+    }
+    
+    .contact-links {
+        justify-content: center;
+    }
+}
+/* --- LISTING PAGE PRE-FOOTER OVERRIDE --- */
+
+/* Force all text and headers in the pre-footer to be black */
+.pre-footer .accordion-header,
+.pre-footer .stay-connected h4,
+.pre-footer .stay-connected p,
+.pre-footer .logo-bold,
+.pre-footer .footer-links a {
+    color: #555 !important;
+}
+
+/* Force social icons to be black */
+.pre-footer .social-icons i {
+    color: #555 !important;
+}
+
+/* REMOVE ALL HOVER EFFECTS: This stops the green from appearing */
+.pre-footer-col:hover,
+.pre-footer-col:hover *,
+.pre-footer .accordion-header:hover,
+.pre-footer .social-icons i:hover,
+.pre-footer .footer-links a:hover {
+    color: #000000 !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+}
+/* =====================
+   HEADER SIZE OVERRIDE (HALVE THE HEIGHT)
+===================== */
+@media (max-width: 768px) {
+    /* 1. Shrink the main mobile container */
+    .mobile-header-block {
+        padding: 5px 15px !important; /* Cuts the 20px padding down */
+    }
+
+    /* 2. Shrink the price text and title to fit the smaller bar */
+    .mobile-price-tag {
+        font-size: 1.2rem !important; /* Cuts the 1.8rem size down */
+        margin-top: 5px !important;   /* Reduces top gap */
+    }
+
+    .mobile-title-row h1 {
+        font-size: 1.1rem !important; /* Slims the title text */
+    }
+
+    /* 3. Pull the image/gallery up to close the gap */
+    .gallery-wrapper {
+        margin-top: -10px !important; 
+    }
+
+    /* 4. Kill the extra body padding that pushes everything down */
+    body {
+        padding-top: 30px !important; 
+    }
+    /* =====================
+   FINAL SLIM-HEADER FIX
+===================== */
+@media (max-width: 768px) {
+    /* This shrinks the bar itself */
+    header {
+        height: 50px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* This pulls the items up to the very top */
+    .nav-toggle, .logo, .hamburger {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+
+    /* This kills the 60px gap seen in your DevTools */
+    body {
+        padding-top: 10px !important;
+    }
+}
+}/* =====================
+   FIX: HOMEPAGE SIDE-DRAWER MENU
+===================== */
+@media (max-width: 768px) {
+    /* Forces the menu to be a drawer, not a full screen */
+    .mobile-menu {
+        width: 70% !important;   /* Limits the width */
+        max-width: 300px;        /* Ensures it doesn't get too wide on tablets */
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;  /* Keeps it hidden off-screen */
+        background: #ffffff !important;
+        z-index: 10001 !important;
+        transition: left 0.3s ease !important;
+        display: flex !important;
+        flex-direction: column;
+        padding-top: 60px;       /* Aligns with your slim header height */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+
+    /* This is the trigger when you click the 3-line menu */
+    .mobile-menu.active {
+        left: 0 !important;      /* Slides into view */
+    }
+}
+/* =====================
+   PANDORA FULL-WIDTH IMAGE FIX
+===================== */
+@media (max-width: 1024px) {
+    /* 1. Remove padding from the main container so content can touch the edges */
+    .property-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 2. Force the gallery and image to be exactly the screen width */
+    .gallery-wrapper, 
+    .main-photo-box, 
+    #property-img {
+        width: 100% !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    #property-img {
+        height: auto !important;
+        min-height: 250px; /* Ensures it doesn't look squashed */
+        object-fit: cover;
+    }
+
+    /* 3. Add the padding BACK to the text so it doesn't touch the screen edge */
+    .mobile-header-block,
+    .desktop-details-bar,
+    .property-description,
+    .details-section .container,
+    .additional-details-section .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        width: auto !important;
+    }
+
+    /* 4. Ensure the desktop-only grid stays hidden on mobile */
+    .side-photos-grid {
+        display: none !important;
+    }
+}/* =====================
+   FIX: ALIGN IMAGE AND TEXT (MOBILE & TABLET)
+===================== */
+@media (max-width: 1024px) {
+    /* 1. Ensure the image has NO bottom margin */
+    .gallery-wrapper, .main-photo-box, #property-img {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    /* 2. Fix Tablet Overlap: Ensure text starts AFTER the image */
+    .mobile-header-block {
+        position: relative !important;
+        top: 0 !important;
+        margin-top: 0 !important;
+        padding-top: 15px !important; /* Space between image and text */
+        background: #fff;
+        z-index: 1;
+    }
+
+    /* 3. Remove extra gap created by the badges container */
+    .mobile-header-block .status-badges {
+        margin-bottom: 5px !important;
+        margin-top: 0 !important;
+    }
+
+    /* 4. Fix for the Property Title and Price spacing */
+    #mobile-title {
+        margin-top: 5px !important;
+        line-height: 1.2;
+    }
+
+    .mobile-price-tag {
+        margin-top: 5px !important;
+    }
+}/* =====================
+   SURGICAL GAP COLLAPSE
+===================== */
+@media (max-width: 600px) {
+    /* 1. Force the image wrapper to only be as tall as the image */
+    .gallery-wrapper, 
+    .main-photo-box {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: 0 !important; /* Kills text-based spacing gaps */
+    }
+
+    /* 2. Reset the image behavior */
+    #property-img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important; /* Let the image dictate the height */
+        margin: 0 !important;
+    }
+
+    /* 3. Aggressive pull-up for the text section */
+    .mobile-header-block {
+        margin-top: -2px !important; /* Tiny overlap to ensure zero white line */
+        padding-top: 15px !important;
+        background: #ffffff !important;
+        position: relative !important;
+        z-index: 10;
+    }
+
+    /* 4. Kill potential padding on the parent container */
+    .property-container {
+        padding-bottom: 0 !important;
+    }
+}/* =====================
+   AGENT FLOATING BAR LAYOUT
+===================== */
+.mobile-floating-agent .agent-profile {
+    display: flex !important;       /* Forces image and text to stay side-by-side */
+    align-items: center !important;  /* Vertically aligns text with the center of the photo */
+    gap: 12px !important;            /* Space between the photo and the text block */
+}
+
+.mobile-floating-agent .agent-info-text {
+    display: flex !important;
+    flex-direction: column !important; /* Stacks the 3 lines of text vertically */
+    justify-content: center;
+}
+
+/* Styling the new label */
+.contact-agent-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: -3px; /* Tightens space to the name below */
+}
+
+.agent-name {
+    font-size: 13px;
+    color: #555;
+}
+
+.agent-status-online {
+    font-size: 11px;
+    color: #27ae60;
+    font-weight: 600;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    opacity: 0; /* Ensures it stays invisible during the 1s wait */
+    animation: fadeInUp 1.8s ease-out forwards; /* Increased to 1.2s for "slowly appears" */
+    animation-delay: 0.4s; /* This creates the 1-second pause after load */
+}

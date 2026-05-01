@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandora Homes - Listings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- =====================
+     HEADER / NAVIGATION
+===================== -->
+<header>
+
+    <!-- MENU ICON (LEFT) -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- LOGO -->
+<div class="logo">
+    <span class="logo-bold">Pandora</span>
+    <span class="logo-light">Homes</span>
+</div>
+    <!-- DESKTOP NAV -->
+    <nav class="desktop-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Find a Property</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- MOBILE MENU (IMPORTANT: place RIGHT AFTER header) -->
+<div class="mobile-menu" id="mobileMenu">
+
+    <div class="close-btn" onclick="toggleMenu()">✕</div>
+
+    <a href="index.html">Home</a>
+    <a href="listings.html">Find a Property</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="#">Careers</a>
+    <a href="#">Insights</a>
+</div>
+
+<div id="page-content">
+
+<!-- =====================
+     SEARCH / FILTER BAR
+===================== -->
+<section class="search-bar">
+    <input type="text" id="search-location" list="locations" placeholder="Location (e.g., Lagos)" autocomplete="off">
+
+<datalist id="locations">
+    <option value="lagos">
+    <option value="abuja">
+    <option value="enugu">
+    <option value="port harcourt">
+    <option value="owerri">
+    <option value="anambra">
+    <option value="ibadan">
+</datalist>
+    
+    <select id="search-type">
+        <option value="">Property Type</option>
+        <option value="apartment">Apartment</option>
+        <option value="house">House</option>
+        <option value="land">Land</option>
+    </select>
+    
+<select id="search-price">
+    <option value="">Price Range (All)</option>
+    <option value="1-5">₦1,000,000 - ₦5,000,000</option>
+    <option value="5-10">₦5,000,000 - ₦10,000,000</option>
+    <option value="10-25">₦10,000,000 - ₦25,000,000</option>
+    <option value="25-50">₦25,000,000 - ₦50,000,000</option>
+    <option value="50-75">₦50,000,000 - ₦75,000,000</option>
+    <option value="75-100">₦75,000,000 - ₦100,000,000</option>
+    <option value="100-plus">₦100,000,000+</option>
+</select>
+    
+    <button onclick="filterProperties()">Search</button>
+</section>
+
+<!-- =====================
+     PROPERTY GRID
+===================== -->
+<section class="properties">
+    <a href="property.html?property=1" class="property-link">
+        <div class="property-card" data-type="apartment" data-location="lagos" data-price="25">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1643297551340-19d8ad4f20ad?q=80&w=1032&auto=format&fit=crop" alt="Luxury Apartment Lagos">
+                <div class="badge badge-left-green">FEATURED</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Luxury Apartment, Lagos</h3>
+                <p class="property-price">₦25,000,000</p>
+                <p class="property-type">APARTMENT</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 2</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 2</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 120m²</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=2" class="property-link">
+        <div class="property-card" data-type="house" data-location="abuja" data-price="55">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Modern Villa Abuja">
+                <div class="badge badge-left-green">FEATURED</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Modern Villa, Abuja</h3>
+                <p class="property-price">₦55,000,000</p>
+                <p class="property-type">HOUSE</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 4</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 3</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 350m²</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=3" class="property-link">
+        <div class="property-card" data-type="house" data-location="port harcourt" data-price="18">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Cozy House Port Harcourt">
+                <div class="badge badge-left-green">FEATURED</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Cozy House, Port Harcourt</h3>
+                <p class="property-price">₦18,000,000</p>
+                <p class="property-type">HOUSE</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 3</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 2</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 180m²</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=4" class="property-link">
+        <div class="property-card" data-type="house" data-location="lagos" data-price="85">
+            <div class="card-image-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX9nxlAhlwn0Ccq4VXm0SRVIF-vIjQQUZ9xg&s" alt="Beachfront Villa Lagos">
+                <div class="badge badge-left-green">HOT</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Beachfront Villa, Lagos</h3>
+                <p class="property-price">₦85,000,000</p>
+                <p class="property-type">HOUSE</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 5</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 4</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 500m²</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=5" class="property-link">
+        <div class="property-card" data-type="land" data-location="abuja" data-price="8">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Land Abuja">
+                <div class="badge badge-left-green">NEW</div>
+                <div class="badge badge-right-black">LAND</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Residential Land, Abuja</h3>
+                <p class="property-price">₦8,000,000</p>
+                <p class="property-type">LAND</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-vector-square"></i> 500 sqm</div>
+                <div class="feature-item"><i class="fas fa-mountain"></i> Dry Land</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=6" class="property-link">
+        <div class="property-card" data-location="enugu" data-type="house" data-price="35">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750" alt="Enugu House">
+                <div class="badge badge-left-green">FEATURED</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Executive 4-Bedroom Bungalow</h3>
+                <p class="property-price">₦35,000,000</p>
+                <p class="property-type">BUNGALOW</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 4</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 4</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 120m²</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=7" class="property-link">
+        <div class="property-card" data-location="enugu" data-type="land" data-price="5">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Enugu Land">
+                <div class="badge badge-left-green">TOP</div>
+                <div class="badge badge-right-black">LAND</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Prime Estate Land</h3>
+                <p class="property-price">₦5,000,000</p>
+                <p class="property-type">LAND</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-vector-square"></i> 500 sqm</div>
+                <div class="feature-item"><i class="fas fa-mountain"></i> Dry Land</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=8" class="property-link">
+        <div class="property-card" data-location="ibadan" data-type="house" data-price="28">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Ibadan House">
+                <div class="badge badge-left-green">FEATURED</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Modern 3-Bedroom Semi-Detached</h3>
+                <p class="property-price">₦28,000,000</p>
+                <p class="property-type">HOUSE</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 3</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 3</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 120m²</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=9" class="property-link">
+        <div class="property-card" data-location="ibadan" data-type="land" data-price="3.5">
+            <div class="card-image-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhuHhNJPSUENQW9tDOTuYNVAIdm0Wdqzk8hw&s" alt="Ibadan Land">
+                <div class="badge badge-left-green">BEST BUY</div>
+                <div class="badge badge-right-black">LAND</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Commercial Plot, Akala Way, Ibadan</h3>
+                <p class="property-price">₦3,500,000</p>
+                <p class="property-type">LAND</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-vector-square"></i> 600 sqm</div>
+                <div class="feature-item"><i class="fas fa-mountain"></i> Dry Land</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="property.html?property=10" class="property-link">
+        <div class="property-card" data-location="owerri" data-type="house" data-price="45">
+            <div class="card-image-container">
+                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6" alt="Owerri House">
+                <div class="badge badge-left-green">LUXURY</div>
+                <div class="badge badge-right-black">FOR SALE</div>
+                <div class="card-overlays">
+                    <i class="far fa-heart overlay-icon"></i>
+                    <i class="fas fa-plus overlay-icon"></i>
+                </div>
+            </div>
+            <div class="card-text-container">
+                <h3 class="property-title">Luxury Duplex, Independence Layout, Enugu</h3>
+                <p class="property-price">₦45,000,000</p>
+                <p class="property-type">HOUSE</p>
+            </div>
+            <div class="card-features-container">
+                <div class="feature-item"><i class="fas fa-bed"></i> 3</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> 3</div>
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> 120m²</div>
+                </div>
+        </div>
+    </a>
+    
+
+</section>
+
+<p id="no-results" style="display:none; text-align:center; margin: 40px; font-weight:600; font-size:1.2rem;">
+    😔 No properties found <br>
+    <span style="font-weight:400; font-size:1rem;">
+        Try Lagos, Abuja or adjust your filters
+    </span>
+</p>
+
+<section class="pre-footer">
+
+    <!-- LOGO -->
+    <div class="pre-footer-logo">
+        <span class="logo-bold">Pandora</span>
+        <span class="logo-light">Realty</span>
+    </div>
+
+    <div class="pre-footer-container">
+
+        <!-- Column 1 -->
+        <div class="pre-footer-col">
+            <div class="accordion-header">
+                Residential <span>⌄</span>
+            </div>
+            <ul class="accordion-content">
+                <li>Residential property</li>
+                <li>Property management</li>
+                <li>Estate agency</li>
+                <li>Valuations</li>
+            </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="pre-footer-col">
+            <div class="accordion-header">
+                Commercial <span>⌄</span>
+            </div>
+            <ul class="accordion-content">
+                <li>Commercial property</li>
+                <li>Property management</li>
+                <li>Estate agency</li>
+                <li>Valuations</li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="pre-footer-col">
+            <div class="accordion-header">
+                About Pandora Homes <span>⌄</span>
+            </div>
+            <ul class="accordion-content">
+                <li>Our App</li>
+                <li>Blog</li>
+                <li>Insights</li>
+                <li>Careers</li>
+                <li>Contact us</li>
+            </ul>
+
+            <div class="stay-connected">
+                <h4>Stay connected</h4>
+                <p>Sign up to Pandora Homes</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-pinterest-p"></i>
+        <i class="fab fa-linkedin-in"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
+    </div>
+
+    <!-- Bottom Links -->
+    <div class="footer-links">
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+    </div>
+
+</section>
+
+<!-- =====================
+     FOOTER
+===================== -->
+<footer>
+    <p>&copy; 2026 Pandora Homes. All Rights Reserved.</p>
+    <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="contact.html">Contact Us</a> </p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
