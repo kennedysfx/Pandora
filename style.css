@@ -2420,3 +2420,11 @@ img {
     animation: fadeInUp 1.8s ease-out forwards; /* Increased to 1.2s for "slowly appears" */
     animation-delay: 0.4s; /* This creates the 1-second pause after load */
 }
+/* This targets mobile devices */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll !important;
+    background-size: cover;
+    background-position: center;
+  }
+}
