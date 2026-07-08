@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Base Resets & Setup
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    color: #334155; /* Clean Slate Gray text */
+    background-color: #f8fafc; /* Off-white background */
+    padding: 40px 20px;
+}
+
+/* ==========================================================================
+   Layout Container
+   ========================================================================== */
+.policy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* White card background */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   Typography Styles
+   ========================================================================== */
+h1 {
+    color: #0f172a; /* Deep charcoal for main header */
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* If the generator included a subtitle or effective date */
+.policy-container .subtitle, 
+.policy-container p:first-of-type em {
+    color: #64748b;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 24px;
+}
+
+h2 {
+    color: #1e293b; /* Dark slate for section headers */
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 6px;
+}
+
+h3 {
+    color: #334155;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Lists & Links
+   ========================================================================== */
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 24px;
+}
+
+li {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+a {
+    color: #0284c7; /* Professional modern blue for hyper-links */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0369a1;
+}
+
+/* ==========================================================================
+   Responsive Mobile Adjustments
+   ========================================================================== */
+@media (max-width: 640px) {
+    body {
+        padding: 16px 8px;
+    }
+    
+    .policy-container {
+        padding: 24px 16px;
+        border-radius: 4px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+}
